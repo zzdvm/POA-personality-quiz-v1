@@ -11,7 +11,7 @@ const questions = [
       "D. Studying how businesses design and develop new products"
     ],
     answer: 0, // A
-    explanation: "Correct! POA focuses on recording, analyzing, and summarizing financial transactions to help businesses make decisions."
+    explanation: "POA focuses on recording, analyzing, and summarizing financial transactions to help businesses make decisions."
   },
   {
     part: 1,
@@ -23,7 +23,7 @@ const questions = [
       "D. It is an expense incurred from the main business activity."
     ],
     answer: 2, // C
-    explanation: "Correct! Revenue is the total amounts earned from the main business activities before deducting costs."
+    explanation: "Revenue is the total amounts earned from the main business activities before deducting costs."
   },
   {
     part: 1,
@@ -35,7 +35,7 @@ const questions = [
       "D. Capital"
     ],
     answer: 1, // B
-    explanation: "Correct! Expenses are costs incurred in operating the business to generate revenue."
+    explanation: "Expenses are costs incurred in operating the business to generate revenue."
   },
   {
     part: 1,
@@ -47,7 +47,7 @@ const questions = [
       "D. It is profit because the laptop provides benefits to the business."
     ],
     answer: 0, // A
-    explanation: "Correct! An asset is a resource owned or controlled by a business that holds future economic value."
+    explanation: "An asset is a resource owned or controlled by a business that holds future economic value."
   },
   {
     part: 1,
@@ -59,7 +59,7 @@ const questions = [
       "D. $1,300"
     ],
     answer: 1, // B
-    explanation: "Correct! $800 (Revenue) - $500 (Expenses) = $300 Profit."
+    explanation: "$800 (Revenue) - $500 (Expenses) = $300 Profit."
   },
   {
     part: 1,
@@ -71,7 +71,7 @@ const questions = [
       "D. $900"
     ],
     answer: 3, // D
-    explanation: "Correct! $2,500 (Revenue) - $1,600 (Expenses) = $900 Profit."
+    explanation: "$2,500 (Revenue) - $1,600 (Expenses) = $900 Profit."
   },
   {
     part: 1,
@@ -83,7 +83,7 @@ const questions = [
       "D. Ignore the difference because it is only one transaction"
     ],
     answer: 1, // B
-    explanation: "Correct! Accountants must maintain integrity and accuracy by verifying supporting documents (receipts) and making necessary corrections."
+    explanation: "Accountants must maintain integrity and accuracy by verifying supporting documents (receipts) and making necessary corrections."
   },
   {
     part: 1,
@@ -95,7 +95,7 @@ const questions = [
       "D. Both the laptop and bank loan are assets."
     ],
     answer: 2, // C
-    explanation: "Correct! The laptop is a resource owned and used by the business (Asset), while the bank loan is money owed to the bank (Liability)."
+    explanation: "The laptop is a resource owned and used by the business (Asset), while the bank loan is money owed to the bank (Liability)."
   },
   {
     part: 1,
@@ -107,7 +107,7 @@ const questions = [
       "D. Rent expense"
     ],
     answer: 2, // C
-    explanation: "Correct! A bank loan is an obligation owed to an external party, making it a liability."
+    explanation: "A bank loan is an obligation owed to an external party, making it a liability."
   },
   {
     part: 1,
@@ -119,7 +119,7 @@ const questions = [
       "D. Customers"
     ],
     answer: 2, // C
-    explanation: "Correct! External regulators/agencies and stakeholders often rely on accounting information."
+    explanation: "External regulators/agencies and stakeholders often rely on accounting information."
   },
   {
     part: 1,
@@ -129,7 +129,7 @@ const questions = [
       "B. False"
     ],
     answer: 1, // B
-    explanation: "Correct! Accounting requires prudence/objectivity rather than overly optimistic assumptions."
+    explanation: "Accounting requires prudence/objectivity rather than overly optimistic assumptions."
   },
   {
     part: 1,
@@ -139,7 +139,7 @@ const questions = [
       "B. False"
     ],
     answer: 1, // B
-    explanation: "Correct! Businesses also need to consider liquidity, ethics, long-term stability, and social responsibility."
+    explanation: "Businesses also need to consider liquidity, ethics, long-term stability, and social responsibility."
   },
   {
     part: 1,
@@ -151,7 +151,7 @@ const questions = [
       "D. The monthly bills paid to keep the shop running"
     ],
     answer: 0, // A
-    explanation: "Correct! Inventory consists of goods held by a business intended for resale."
+    explanation: "Inventory consists of goods held by a business intended for resale."
   },
   {
     part: 1,
@@ -163,7 +163,7 @@ const questions = [
       "D. Throw the goods away without any recording"
     ],
     answer: 2, // C
-    explanation: "Correct! Loss of damaged inventory must be accurately recorded to keep financial statements truthful."
+    explanation: "Loss of damaged inventory must be accurately recorded to keep financial statements truthful."
   },
   {
     part: 1,
@@ -175,10 +175,10 @@ const questions = [
       "D. Bank loan borrowed to start the business"
     ],
     answer: 2, // C
-    explanation: "Correct! Rent is an operating cost consumed during the period."
+    explanation: "Rent is an operating cost consumed during the period."
   },
 
-  // --- PART 2: GET TO KNOW YOU (Personality mapping A/B/C/D) ---
+  // --- PART 2: GET TO KNOW YOU ---
   {
     part: 2,
     question: "Q16 — Group Project\nYour group project is due tomorrow and your group has barely started. What do you do?",
@@ -251,7 +251,6 @@ const questions = [
   }
 ];
 
-// Character Depictions mapped to dominant choice in Part 2
 const characters = {
   A: {
     title: "The Strategic Owl 🦉",
@@ -275,13 +274,11 @@ const characters = {
   }
 };
 
-// State Variables
 let currentQuestionIndex = 0;
 let score = 0;
 let personalityScores = { A: 0, B: 0, C: 0, D: 0 };
 let hasAnsweredCurrentQuestion = false;
 
-// DOM Elements
 const startCard = document.getElementById("start-card");
 const quizCard = document.getElementById("quiz-card");
 const resultCard = document.getElementById("result-card");
@@ -300,7 +297,6 @@ const optionsContainer = document.getElementById("options-container");
 const feedbackBox = document.getElementById("feedback-box");
 const feedbackMessage = document.getElementById("feedback-message");
 
-// Event Listeners
 startBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", handleNextQuestion);
 restartBtn.addEventListener("click", resetQuiz);
@@ -315,7 +311,6 @@ function loadQuestion() {
   hasAnsweredCurrentQuestion = false;
   const currentQ = questions[currentQuestionIndex];
   
-  // UI Headers & Progress
   const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
   progressBar.style.width = `${progressPercent}%`;
   questionCount.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
@@ -328,15 +323,12 @@ function loadQuestion() {
     scoreTracker.style.display = "none";
   }
 
-  // Reset feedback box completely for the new question
   feedbackMessage.innerHTML = "";
   feedbackBox.className = "feedback-box hidden";
 
-  // Question Text & Options reset
   questionText.innerText = currentQ.question;
   optionsContainer.innerHTML = "";
 
-  // Render Options
   currentQ.options.forEach((optText, index) => {
     const btn = document.createElement("button");
     btn.className = "option-btn";
@@ -353,11 +345,9 @@ function selectOption(selectedIndex) {
   const currentQ = questions[currentQuestionIndex];
   const optionButtons = optionsContainer.querySelectorAll(".option-btn");
 
-  // Disable all options once an answer is clicked
   optionButtons.forEach(btn => btn.disabled = true);
 
   if (currentQ.part === 1) {
-    // Evaluation for Part 1 (Right/Wrong)
     if (selectedIndex === currentQ.answer) {
       score++;
       scoreTracker.textContent = `Score: ${score}`;
@@ -371,7 +361,6 @@ function selectOption(selectedIndex) {
       feedbackMessage.innerHTML = `❌ <strong>Not quite!</strong> ${currentQ.explanation}`;
     }
   } else {
-    // Evaluation for Part 2 (Personality Mapping)
     const choiceKey = ["A", "B", "C", "D"][selectedIndex];
     if (choiceKey) personalityScores[choiceKey]++;
 
@@ -380,7 +369,6 @@ function selectOption(selectedIndex) {
     feedbackMessage.innerHTML = `💡 Great choice! Let's see what this says about you...`;
   }
 
-  // Show the feedback box ONLY after selecting an option
   feedbackBox.classList.remove("hidden");
 }
 
@@ -402,10 +390,8 @@ function showResults() {
   quizCard.classList.add("hidden");
   resultCard.classList.remove("hidden");
 
-  // Final Part 1 Score
   document.getElementById("final-score").textContent = score;
 
-  // Find dominant Part 2 character choice
   let maxCount = -1;
   let dominantChar = "A";
 
