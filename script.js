@@ -279,6 +279,7 @@ const characters = {
 let currentQuestionIndex = 0;
 let score = 0;
 let personalityScores = { A: 0, B: 0, C: 0, D: 0 };
+let hasAnsweredCurrentQuestion = false;
 
 // DOM Elements
 const startCard = document.getElementById("start-card");
@@ -311,6 +312,7 @@ function startQuiz() {
 }
 
 function loadQuestion() {
+  hasAnsweredCurrentQuestion = false;
   const currentQ = questions[currentQuestionIndex];
   
   // UI Headers & Progress
@@ -326,10 +328,13 @@ function loadQuestion() {
     scoreTracker.style.display = "none";
   }
 
+  // Reset feedback box completely for the new question
+  feedbackMessage.innerHTML = "";
+  feedbackBox.className = "feedback-box hidden";
+
   // Question Text & Options reset
   questionText.innerText = currentQ.question;
   optionsContainer.innerHTML = "";
-  feedbackBox.classList.add("hidden");
 
   // Render Options
   currentQ.options.forEach((optText, index) => {
@@ -342,6 +347,9 @@ function loadQuestion() {
 }
 
 function selectOption(selectedIndex) {
+  if (hasAnsweredCurrentQuestion) return;
+  hasAnsweredCurrentQuestion = true;
+
   const currentQ = questions[currentQuestionIndex];
   const optionButtons = optionsContainer.querySelectorAll(".option-btn");
 
@@ -372,10 +380,16 @@ function selectOption(selectedIndex) {
     feedbackMessage.innerHTML = `💡 Great choice! Let's see what this says about you...`;
   }
 
+  // Show the feedback box ONLY after selecting an option
   feedbackBox.classList.remove("hidden");
 }
 
 function handleNextQuestion() {
+  if (!hasAnsweredCurrentQuestion) {
+    alert("Please select an answer before moving to the next question!");
+    return;
+  }
+
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     loadQuestion();
